@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+  </head>
+  <body>
+    <div id="player"></div>
+
+    <script>
+
+      const secretCode = "unicorn";
+      const pressedKeys = [];
+
+      function handleClick(e) {
+        pressedKeys.push(e.key);
+        if (pressedKeys.length > secretCode.length) {
+          pressedKeys.splice(
+            -secretCode.length - 1,
+            pressedKeys.length - secretCode.length
+          );
+        }
+
+        if (pressedKeys.join("") == secretCode) {
+          cornify_add()
+        }
+      }
+
+      window.addEventListener("keydown", handleClick);
+    </script>
+  </body>
+</html>
